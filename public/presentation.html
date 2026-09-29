@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoSmart AI - Complete Multi-Image Presentation Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --secondary: #06b6d4;
+      --dark: #0f172a;
+      --surface: #1e293b;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --danger: #ef4444;
+      --blue: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #090d16;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 16px 32px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-badge {
+      font-size: 10px;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      text-transform: uppercase;
+    }
+    .controls { display: flex; gap: 12px; }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      width: 100%;
+    }
+
+    .slide {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .slide-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      background: rgba(16, 185, 129, 0.15);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .slide-tag.tag-danger {
+      color: #f87171;
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .slide-tag.tag-blue {
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .slide-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 868px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .img-container {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: #000;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .meta-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .meta-label { color: var(--muted); font-weight: 500; }
+    .meta-value { color: #ffffff; font-weight: 700; }
+    .meta-value.highlight { color: var(--primary); }
+
+    .explanation-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    .explanation-text strong { color: #ffffff; }
+
+    .badge-wet { background: #047857; color: white; padding: 3px 10px; border-radius: 6px; font-weight: 700; font-size: 12px; }
+    .badge-dry { background: #1d4ed8; color: white; padding: 3px 10px; border-radius: 6px; font-weight: 700; font-size: 12px; }
+    .badge-bio { background: #b91c1c; color: white; padding: 3px 10px; border-radius: 6px; font-weight: 700; font-size: 12px; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .summary-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .summary-card h4 { font-size: 14px; color: var(--primary); margin-bottom: 6px; }
+    .summary-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      🌱 EcoSmart AI <span class="logo-badge">All 7 Images Presentation Deck</span>
+    </div>
+    <div class="controls">
+      <a href="/EcoSmart_AI_Waste_Classification_Report.pdf" target="_blank" class="btn btn-secondary">
+        📥 Download PDF Report
+      </a>
+      <a href="/" class="btn btn-primary">
+        🚀 Launch AI Scanner System
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Executive Presentation</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 1 of 9</span>
+      </div>
+      <h1 style="font-family:'Outfit',sans-serif; font-size:36px; font-weight:800; color:#fff; margin-bottom:12px">
+        AI Smart Waste Classification & Resource Recovery
+      </h1>
+      <p style="font-size:16px; color:#94a3b8; max-width:800px; line-height:1.6; margin-bottom:24px">
+        Full image classification analysis showing 7 real waste images across Organic Food Waste, Plastic Recyclables, Clinical Biohazards, and Hazardous E-Waste.
+      </p>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <h4>Organic Food Waste</h4>
+          <p>Banana peels, leaves, grapes, food scraps (70%–98% Recovery in Green Bins).</p>
+        </div>
+        <div class="summary-card">
+          <h4>Plastic Recyclables</h4>
+          <p>Disposable cups, PET plastic bottles, straws, cardboard (80%–95% Recovery in Blue Bins).</p>
+        </div>
+        <div class="summary-card">
+          <h4>Medical Biohazards</h4>
+          <p>Clinical syringes, needles, glass vials (Yellow Biohazard Sharps Boxes).</p>
+        </div>
+        <div class="summary-card">
+          <h4>Hazardous Materials</h4>
+          <p>Lithium-ion batteries, chemicals, e-waste (Red Special Hazard Drop-offs).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Image 1 Logo -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Brand Asset</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 2 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1788950567509.jpg" alt="Recycling Symbol Logo" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px">Image 1: Universal Recycling Symbol</h2>
+          
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Identified Item:</span>
+              <span class="meta-value">Universal Recycling Symbol (Mobius Loop)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Classification Role:</span>
+              <span class="meta-value highlight">Circular Economy Asset</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Detection Accuracy:</span>
+              <span class="meta-value">100%</span>
+            </div>
+          </div>
+
+          <div class="explanation-text">
+            <strong>System Function:</strong> Serves as the primary brand asset and visual indicator for closed-loop resource recovery in the EcoSmart AI system. Symbolizes the total diversion of secondary raw materials from municipal dumping grounds into productive circular economy loops.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Image 2 Plastic Pile -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag tag-blue">Plastic Recyclables</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 3 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1789635962671.webp" alt="Plastic Waste Pile" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px">Image 2: Disposable Plastic Packaging Pile</h2>
+          
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Identified Objects:</span>
+              <span class="meta-value">Plastic Cups, Straws, PET Bottles & Wrappings</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Assigned Stream:</span>
+              <span class="badge-dry">Dry / Recyclable Waste</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Recovery Range:</span>
+              <span class="meta-value highlight">80% – 95% Potential</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Disposal Bin:</span>
+              <span class="meta-value">Blue Dry Recycling Bin</span>
+            </div>
+          </div>
+
+          <div class="explanation-text">
+            <strong>Full AI Explanation:</strong> Dense pile of single-use clear plastic beverage cups, straws, PET water bottles, paper plates, and plastic film wrapping. Non-biodegradable synthetic polymers (PET, Polypropylene, HDPE) that can be mechanically shredded, washed, melted into rPET pellets, and extruded into new beverage containers or polyester textile fibers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Image 3 Medical Biohazard -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag tag-danger">Critical Biohazard Stream</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 4 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1789636020573.webp" alt="Medical Syringes" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px; color:#ef4444">Image 3: Clinical Syringes & Biohazard Sharps</h2>
+          
+          <div class="meta-box" style="border-color:rgba(239,68,68,0.3); background:rgba(239,68,68,0.1)">
+            <div class="meta-row">
+              <span class="meta-label">Identified Objects:</span>
+              <span class="meta-value">Used Hypodermic Syringes, Needles, Glass Vials</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Assigned Stream:</span>
+              <span class="badge-bio">Biomedical Waste (Biohazard Alert)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Recovery Range:</span>
+              <span class="meta-value" style="color:#ef4444">0% – 15% (Autoclave Sterilization)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Disposal Bin:</span>
+              <span class="meta-value">Yellow Biohazard Sharps Box</span>
+            </div>
+          </div>
+
+          <div class="explanation-text" style="color:#fca5a5">
+            <strong>CRITICAL SAFETY PROTOCOL:</strong> Infectious clinical items capable of harboring bloodborne pathogens (Hepatitis B, HIV). NEVER place in household bins. DO NOT RECAP NEEDLES. Isolate immediately in puncture-proof yellow boxes for 121°C high-pressure steam autoclaving.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Image 4 Banana Leaves -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">AI Detection #4</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 5 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1788955473519.jpg" alt="Banana Leaves" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px">Image 4: Dried & Green Banana Leaves</h2>
+          
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Identified Item:</span>
+              <span class="meta-value">Banana Leaves & Plant Stalks (Musa paradisiaca)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Assigned Stream:</span>
+              <span class="badge-wet">Wet / Organic Waste</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Recovery Range:</span>
+              <span class="meta-value highlight">85% – 98% Potential</span>
+            </div>
+          </div>
+
+          <div class="explanation-text">
+            <strong>Full AI Explanation:</strong> Natural leaf foliage and fibrous plant stems. High cellulose and organic carbon content makes it 100% biodegradable. Recommended for aerobic composting, agricultural mulching, or shredding for bio-digestion.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Image 5 Yellow Banana Peels -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">AI Detection #5</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 6 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1788955473525.jpg" alt="Banana Peels Stack" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px">Image 5: Fresh Yellow Banana Peels Stack</h2>
+          
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Identified Item:</span>
+              <span class="meta-value">Yellow Banana Peels (Food Scraps)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Assigned Stream:</span>
+              <span class="badge-wet">Wet / Organic Waste</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Recovery Range:</span>
+              <span class="meta-value highlight">90% – 98% Potential</span>
+            </div>
+          </div>
+
+          <div class="explanation-text">
+            <strong>Full AI Explanation:</strong> High-moisture pericarp fruit skin tissue rich in potassium (K) and nitrogen (N). Rapidly broken down by vermicomposting earthworms and aerobic composting bacteria into nutrient-dense organic fertilizer.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Image 6 Speckled Banana Peels -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">AI Detection #6</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 7 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1788955473527.jpg" alt="Speckled Banana Peels" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px">Image 6: Speckled Brown & Yellow Banana Peels</h2>
+          
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Identified Item:</span>
+              <span class="meta-value">Speckled Ripened Banana Peels & Fruit Residue</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Assigned Stream:</span>
+              <span class="badge-wet">Wet / Organic Waste</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Recovery Range:</span>
+              <span class="meta-value highlight">90% – 98% Potential</span>
+            </div>
+          </div>
+
+          <div class="explanation-text">
+            <strong>Full AI Explanation:</strong> Fully ripened organic food matter. High sugar and cellulose content that easily breaks down in municipal green bin compost heaps.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Image 7 Grapes & Plums -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">AI Detection #7</span>
+        <span style="font-size:12px; color:var(--muted)">Slide 8 of 9</span>
+      </div>
+      <div class="grid-2">
+        <div class="img-container">
+          <img src="/.user_uploaded/media_1788955473529.jpg" alt="Grapes and Fruit Scraps" />
+        </div>
+        <div>
+          <h2 class="slide-title" style="margin-bottom:12px">Image 7: Mixed Fruit Scraps (Grapes & Plums)</h2>
+          
+          <div class="meta-box">
+            <div class="meta-row">
+              <span class="meta-label">Identified Item:</span>
+              <span class="meta-value">Bunch of Grapes, Plums, Apples & Leafy Greens</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Assigned Stream:</span>
+              <span class="badge-wet">Wet / Organic Waste</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Recovery Range:</span>
+              <span class="meta-value highlight">88% – 98% Potential</span>
+            </div>
+          </div>
+
+          <div class="explanation-text">
+            <strong>Full AI Explanation:</strong> Diverse fruit residue containing dark grapes, plums, citrus rinds, and parsley greens. High moisture anthocyanin bio-matter that supplies essential micronutrients (phosphorus, potassium, organic acids) to municipal compost mixtures.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: Conclusion -->
+    <div class="slide text-center" style="text-align:center">
+      <div class="slide-header" style="justify-content:center">
+        <span class="slide-tag">Conclusion & System Status</span>
+      </div>
+      <h2 style="font-family:'Outfit',sans-serif; font-size:32px; font-weight:800; color:#fff; margin-bottom:16px">
+        Complete 7-Image Multi-Stream System Ready
+      </h2>
+      <p style="font-size:15px; color:#94a3b8; max-width:650px; margin:0 auto 32px; line-height:1.6">
+        The PDF report and live web platform now embed all 7 images, featuring detailed AI classification explanations for Organic Food Waste, Plastic Packaging Piles, and Clinical Medical Syringes.
+      </p>
+
+      <div style="display:flex; justify-content:center; gap:16px">
+        <a href="/EcoSmart_AI_Waste_Classification_Report.pdf" target="_blank" class="btn btn-secondary" style="padding:12px 24px; font-size:14px">
+          📄 Download Complete PDF
+        </a>
+        <a href="/" class="btn btn-primary" style="padding:12px 24px; font-size:14px">
+          🚀 Open Live EcoSmart System
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

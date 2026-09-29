@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #10b981;
+    --color-primary-hover: #059669;
+    --color-primary-light: #d1fae5;
+    --color-primary-dark: #047857;
+    --color-secondary: #06b6d4;
+    --color-secondary-hover: #0891b2;
+    --color-accent: #8b5cf6;
+    --color-accent-hover: #7c3aed;
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-hover: #f1f5f9;
+    --color-foreground: #0f172a;
+    --color-muted: #64748b;
+    --color-muted-foreground: #94a3b8;
+    --color-border: #e2e8f0;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
+  }
+
+  .dark {
+    --color-primary: #10b981;
+    --color-primary-hover: #34d399;
+    --color-primary-light: #064e3b;
+    --color-primary-dark: #047857;
+    --color-secondary: #22d3ee;
+    --color-secondary-hover: #06b6d4;
+    --color-accent: #a78bfa;
+    --color-accent-hover: #8b5cf6;
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-surface-hover: #334155;
+    --color-foreground: #f8fafc;
+    --color-muted: #94a3b8;
+    --color-muted-foreground: #64748b;
+    --color-border: #334155;
+    --color-success: #10b981;
+    --color-warning: #fbbf24;
+    --color-danger: #f87171;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-panel {
+  background: rgba(30, 41, 59, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
