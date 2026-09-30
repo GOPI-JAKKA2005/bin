@@ -4,6 +4,7 @@ import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { Navbar } from './components/layout/Navbar';
+import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { Footer } from './components/layout/Footer';
 import { ChatWidget } from './components/chatbot/ChatWidget';
 import { MaintenanceOverlay } from './components/layout/MaintenanceOverlay';
@@ -29,7 +30,7 @@ function AppContent() {
 
       {!isAdminRoute && <MaintenanceOverlay settings={settings} />}
 
-      <main className="flex-1">
+      <main className="flex-1 pb-20 lg:pb-0">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/analyze" element={<AnalyzePage />} />
@@ -45,6 +46,7 @@ function AppContent() {
         </Routes>
       </main>
 
+      {!isAdminRoute && <MobileBottomNav />}
       {!isAdminRoute && <Footer />}
       {!isAdminRoute && settings?.chatbotEnabled !== false && <ChatWidget />}
     </div>

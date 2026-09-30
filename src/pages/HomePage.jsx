@@ -14,10 +14,10 @@ export function HomePage() {
   const { analyzing, compressing, compressionStats, result, error, processMediaAndAnalyze, resetAnalyzer } = useWasteAnalyzer();
 
   const categories = [
-    { name: 'Wet / Organic Waste', color: 'from-emerald-500 to-teal-600', icon: Leaf, desc: 'Banana peels, grapes, fruit & food scraps, coffee grounds, garden trim.', range: '70%–95% Recovery' },
-    { name: 'Dry / Recyclable Waste', color: 'from-blue-500 to-cyan-600', icon: Recycle, desc: 'PET plastic bottles, paper, cardboard, glass containers, metal cans.', range: '60%–90% Recovery' },
-    { name: 'Biomedical Waste', color: 'from-red-500 to-rose-600', icon: Activity, desc: 'Syringes, needles, clinical gloves, bandages, expired drugs.', range: 'Strict Biohazard' },
-    { name: 'Hazardous Waste', color: 'from-amber-500 to-orange-600', icon: AlertTriangle, desc: 'Lithium batteries, paints, solvents, e-waste, mercury bulbs.', range: 'Toxic Handling' },
+    { name: 'Wet / Organic Waste', color: 'from-emerald-500 via-emerald-600 to-green-700', icon: Leaf, desc: 'Banana peels, grapes, fruit & food scraps, coffee grounds, garden trim.', range: '70%–95% Recovery' },
+    { name: 'Dry / Recyclable Waste', color: 'from-amber-400 via-yellow-500 to-emerald-500', icon: Recycle, desc: 'PET plastic bottles, paper, cardboard, glass containers, metal cans.', range: '60%–90% Recovery' },
+    { name: 'Biomedical Waste', color: 'from-amber-500 via-red-500 to-rose-600', icon: Activity, desc: 'Syringes, needles, clinical gloves, bandages, expired drugs.', range: 'Strict Biohazard' },
+    { name: 'Hazardous Waste', color: 'from-yellow-400 via-amber-500 to-emerald-600', icon: AlertTriangle, desc: 'Lithium batteries, paints, solvents, e-waste, mercury bulbs.', range: 'Toxic Handling' },
   ];
 
   return (
@@ -28,19 +28,19 @@ export function HomePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-xs"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-emerald-500/20 border border-amber-400/40 text-amber-600 dark:text-amber-400 font-extrabold text-xs shadow-xs"
         >
-          <Sparkles className="w-4 h-4 animate-spin" />
-          AI Smart Waste Classification Engine v1.0
+          <Sparkles className="w-4 h-4 text-amber-500 animate-spin" />
+          AI Waste Segregation Engine v2.0
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-6xl font-extrabold tracking-tight font-heading text-foreground max-w-4xl mx-auto leading-tight"
+          className="text-4xl sm:text-6xl font-black tracking-tight font-heading text-foreground max-w-4xl mx-auto leading-tight"
         >
-          Identify, Segregate & Recover Waste with <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Artificial Intelligence</span>
+          Identify, Segregate & Recover Waste with <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-emerald-500 bg-clip-text text-transparent">AI Vision & Eco Intelligence</span>
         </motion.h1>
 
         <motion.p
@@ -49,7 +49,7 @@ export function HomePage() {
           transition={{ delay: 0.2 }}
           className="text-sm sm:text-base text-muted max-w-2xl mx-auto leading-relaxed"
         >
-          Upload any waste photo (e.g., Bananas, Grapes, Bottles, Cans, Batteries). Our AI identifies exact items and states whether it is Wet Organic, Dry Recyclable, Biomedical, or Hazardous waste!
+          Upload or capture any waste item (e.g. Bananas, Grapes, Bottles, Cans, Batteries). Our AI identifies items instantly and guides you on Wet Organic, Dry Recyclable, Biomedical, and Hazardous segregation!
         </motion.p>
       </section>
 
@@ -72,8 +72,8 @@ export function HomePage() {
             />
 
             {compressing && (
-              <div className="p-6 rounded-3xl bg-surface border border-border text-center space-y-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto animate-spin">
+              <div className="p-6 rounded-3xl bg-surface border border-amber-500/30 text-center space-y-3">
+                <div className="w-10 h-10 rounded-full bg-amber-400/20 text-amber-500 flex items-center justify-center mx-auto animate-spin">
                   <Cpu className="w-5 h-5" />
                 </div>
                 <h4 className="font-bold text-sm text-foreground">Compressing & Preparing Media...</h4>
@@ -84,8 +84,8 @@ export function HomePage() {
             {compressionStats && <ImageCompressorView stats={compressionStats} />}
 
             {analyzing && !compressing && (
-              <div className="p-8 rounded-3xl bg-surface border border-border text-center space-y-3 shadow-xl">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center mx-auto animate-bounce">
+              <div className="p-8 rounded-3xl bg-surface border border-emerald-500/30 text-center space-y-3 shadow-xl">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-400 via-yellow-400 to-emerald-500 text-slate-950 flex items-center justify-center mx-auto animate-bounce">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <h4 className="font-bold text-base text-foreground font-heading">AI Vision Model Analyzing Objects...</h4>
@@ -117,7 +117,7 @@ export function HomePage() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-3xl bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow-lg transition-all space-y-4 group"
+                className="p-6 rounded-3xl bg-surface border border-border hover:border-amber-400/50 shadow-sm hover:shadow-xl hover:shadow-amber-500/10 transition-all space-y-4 group"
               >
                 <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${cat.color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
                   <Icon className="w-6 h-6" />
@@ -126,9 +126,9 @@ export function HomePage() {
                   <h3 className="font-bold text-base text-foreground font-heading">{cat.name}</h3>
                   <p className="text-xs text-muted mt-1 leading-relaxed">{cat.desc}</p>
                 </div>
-                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-primary">
+                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
                   <span>{cat.range}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-amber-500 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             );
@@ -138,9 +138,9 @@ export function HomePage() {
         <div className="text-center pt-4">
           <Link
             to="/guide"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-surface border border-border text-foreground font-semibold text-xs hover:border-primary transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-400/10 via-yellow-400/10 to-emerald-500/10 border border-amber-400/30 text-foreground font-bold text-xs hover:border-emerald-500 hover:scale-102 transition-all shadow-sm"
           >
-            Explore Complete Waste Directory Guide <ArrowRight className="w-4 h-4" />
+            Explore Complete Waste Directory Guide <ArrowRight className="w-4 h-4 text-amber-500" />
           </Link>
         </div>
       </section>
