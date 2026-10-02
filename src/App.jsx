@@ -30,7 +30,7 @@ function AppContent() {
 
       {!isAdminRoute && <MaintenanceOverlay settings={settings} />}
 
-      <main className="flex-1 pb-20 lg:pb-0">
+      <main className="flex-1 pb-28 lg:pb-8">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/analyze" element={<AnalyzePage />} />
