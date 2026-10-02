@@ -14,7 +14,7 @@ export function MobileBottomNav() {
 
   return (
     <div className="fixed bottom-3 left-3 right-3 z-40 lg:hidden">
-      <nav className="glass-floating-nav rounded-3xl px-3 py-2 shadow-2xl backdrop-blur-2xl border border-amber-500/30 dark:border-emerald-500/30">
+      <nav className="glass-floating-nav rounded-3xl px-3 py-2 shadow-2xl backdrop-blur-2xl border border-blue-500/30 dark:border-emerald-500/30">
         <div className="flex items-center justify-between max-w-md mx-auto relative px-1">
           
           {/* Home */}
@@ -22,11 +22,11 @@ export function MobileBottomNav() {
             to="/"
             className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl transition-all duration-200 active:scale-95 ${
               isActive('/')
-                ? 'bg-amber-400/20 text-amber-600 dark:text-amber-400 font-extrabold shadow-xs'
+                ? 'bg-blue-500/20 text-blue-600 dark:text-blue-400 font-extrabold shadow-xs'
                 : 'text-muted hover:text-foreground'
             }`}
           >
-            <Home className={`w-5 h-5 ${isActive('/') ? 'text-amber-500 animate-bounce' : ''}`} />
+            <Home className={`w-5 h-5 ${isActive('/') ? 'text-blue-500 animate-bounce' : ''}`} />
             <span className="text-[10px] font-bold tracking-tight">Home</span>
           </Link>
 
@@ -50,17 +50,17 @@ export function MobileBottomNav() {
           >
             <div className="relative">
               {/* Outer Glow Halo */}
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-emerald-500 opacity-75 blur-sm group-hover:opacity-100 transition-opacity animate-pulse-glow" />
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-500 opacity-80 blur-sm group-hover:opacity-100 transition-opacity animate-pulse-glow" />
               
-              <div className={`relative w-14 h-14 rounded-full bg-gradient-to-tr from-amber-400 via-yellow-400 to-emerald-500 text-slate-950 flex items-center justify-center shadow-xl border-4 border-background transition-all ${
-                isActive('/analyze') ? 'ring-4 ring-emerald-500/50 scale-105' : 'group-hover:scale-105'
+              <div className={`relative w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 via-teal-500 to-emerald-500 text-white flex items-center justify-center shadow-xl border-4 border-background transition-all ${
+                isActive('/analyze') ? 'ring-4 ring-blue-500/50 scale-105' : 'group-hover:scale-105'
               }`}>
-                <Sparkles className="w-6 h-6 text-slate-950 animate-spin" style={{ animationDuration: '6s' }} />
+                <Sparkles className="w-6 h-6 text-white animate-spin" style={{ animationDuration: '6s' }} />
               </div>
             </div>
             <span className={`text-[10px] font-black mt-0.5 tracking-wider uppercase ${
               isActive('/analyze') 
-                ? 'text-emerald-600 dark:text-emerald-400 font-extrabold' 
+                ? 'text-blue-600 dark:text-blue-400 font-extrabold' 
                 : 'text-muted'
             }`}>
               AI Scan
@@ -72,11 +72,11 @@ export function MobileBottomNav() {
             to="/history"
             className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl transition-all duration-200 active:scale-95 ${
               isActive('/history')
-                ? 'bg-amber-400/20 text-amber-600 dark:text-amber-400 font-extrabold shadow-xs'
+                ? 'bg-blue-500/20 text-blue-600 dark:text-blue-400 font-extrabold shadow-xs'
                 : 'text-muted hover:text-foreground'
             }`}
           >
-            <History className={`w-5 h-5 ${isActive('/history') ? 'text-amber-500' : ''}`} />
+            <History className={`w-5 h-5 ${isActive('/history') ? 'text-blue-500' : ''}`} />
             <span className="text-[10px] font-bold tracking-tight">History</span>
           </Link>
 

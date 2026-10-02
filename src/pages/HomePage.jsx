@@ -28,9 +28,9 @@ export function HomePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-emerald-500/20 border border-amber-400/40 text-amber-600 dark:text-amber-400 font-extrabold text-xs shadow-xs"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 via-teal-500/20 to-emerald-500/20 border border-blue-500/40 text-blue-600 dark:text-blue-400 font-extrabold text-xs shadow-xs"
         >
-          <Sparkles className="w-4 h-4 text-amber-500 animate-spin" />
+          <Sparkles className="w-4 h-4 text-blue-500 animate-spin" />
           AI Waste Segregation Engine v2.0
         </motion.div>
 
@@ -40,7 +40,7 @@ export function HomePage() {
           transition={{ delay: 0.1 }}
           className="text-4xl sm:text-6xl font-black tracking-tight font-heading text-foreground max-w-4xl mx-auto leading-tight"
         >
-          Identify, Segregate & Recover Waste with <span className="bg-gradient-to-r from-amber-400 via-yellow-400 to-emerald-500 bg-clip-text text-transparent">AI Vision & Eco Intelligence</span>
+          Identify, Segregate & Recover Waste with <span className="bg-gradient-to-r from-blue-600 via-teal-500 to-emerald-500 bg-clip-text text-transparent">AI Vision & Eco Intelligence</span>
         </motion.h1>
 
         <motion.p
